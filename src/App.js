@@ -213,13 +213,16 @@ const dataArray=Array.isArray(response.data)?response.data:[];
           {trendingcars.map((car) => (
             <div className="col" key={car.id}>
               <div className="card" style={{ width: '18rem' }}>
-                <img src="https://motorexporters.com/wp-content/uploads/2020/07/VEHICLE-SOURCE-IMAGE-3.jpg" className="card-img-top" alt="car_image" />
+              
                 <div className="card-body">
+                <img src={car.image} alt={`Image of ${car.model_name}`} className="card-img-top" />
+
                   <h5 className="card-title">Model_name: {car.model_name}</h5>
                   <p className="card-text">List Price: {car.list_price}</p>
                   <p className="card-text">Mileage: {car.mileage}</p>
                   <p className="card-text">color: {car.colors}</p>
                   <p className="card-text">maximum_speed: {car.max_speed}</p>
+                 
                 </div>
               </div>
             </div> 
