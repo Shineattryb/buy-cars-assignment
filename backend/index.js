@@ -50,22 +50,6 @@ app.get('/api/oem/models/count', (req, res) => {
     });
 });
 
-//api to search for Honda City 2015 OEM specs
-
-// app.get('/api/oem/models/count/:manufacturer/:model/:year', (req, res) => {
-//     const manufacturer=req.params.manufacturer;
-//     const modelName = req.params.model;
-//     const year = req.params.year;
-
-//     connection.query('SELECT * FROM OEM_Specs WHERE CONCAT(manufacturer=? AND model_name = ? AND year = ?', [manufacturer,modelName, year], (error, results) => {
-//         if (error) {
-//             console.error(error);
-//             res.status(500).json({ error: 'Internal Server Error' });
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
 
 app.get('/api/oem/models/search', (req, res) => {
     console.log("Search API");
@@ -101,17 +85,15 @@ app.get('/api/oem/models', (req, res) => {
     }
 
     if (mileage) {
-        filters.push(mileage)
-        sqlQuery += ' AND mileage >= ?';
+        const mileageRange = mileage.split('-').map(Number);
+        filters.push(mileageRange[0], mileageRange[1]);
+        sqlQuery += ' AND mileage BETWEEN ? AND ?';
     }
 
     if (price) {
-        filters.push(price)
-        if (price === 'low') {
-            sqlQuery += ' ORDER BY list_price ASC';
-        } else if (price === 'high') {
-            sqlQuery += ' ORDER BY list_price DESC';
-        }
+        const priceRange = price.split('-').map(Number);
+        filters.push(priceRange[0], priceRange[1]);
+        sqlQuery += ' AND list_price BETWEEN ? AND ?';
     }
     // console.log(sqlQuery);
 
