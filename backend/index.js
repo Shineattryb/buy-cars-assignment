@@ -52,16 +52,40 @@ app.get('/api/oem/models/count', (req, res) => {
 
 
 app.get('/api/oem/models/search', (req, res) => {
-    console.log("Search API");
-    connection.query(`SELECT * FROM OEM_Specs WHERE CONCAT(manufacturer , ' ' , model_name , ' ' , year) = "${req.query.searchitem}";`, (error, results) => {
-        if (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        console.log(results)
-        res.send(results);
+    // console.log("Search API");
+    // connection.query(`SELECT * FROM OEM_Specs WHERE CONCAT(manufacturer , ' ' , model_name , ' ' , year) = "${req.query.searchitem}";`, (error, results) => {
+    //     if (error) {
+    //         console.error(error);
+    //         res.status(500).json({ error: 'Internal Server Error' });
+    //         return;
+    //     }
+    //     console.log(results)
+    //     res.send(results);
+    // });
+    app.get('/api/oem/models/search', (req, res) => {
+        console.log("Search API");
+    
+        // Get the search item from the request query
+        const searchItem = req.query.searchitem;
+    
+        // Build a dynamic SQL query for partial matches
+        const sqlQuery = `
+            SELECT * FROM OEM_Specs
+            WHERE manufacturer LIKE ? OR model_name LIKE ? OR year LIKE ?
+        `;
+    
+        // Execute the query with the search item
+        connection.query(sqlQuery, [`%${searchItem}%`, `%${searchItem}%`, `%${searchItem}%`], (error, results) => {
+            if (error) {
+                console.error(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+                return;
+            }
+            console.log(results);
+            res.send(results);
+        });
     });
+    
 });
 
 
@@ -73,7 +97,7 @@ app.get('/api/oem/models', (req, res) => {
     const color = req.query.colors;
     const mileage = req.query.mileage;
    
-    const filters = []
+    const filters = [];
 
     // Build the SQL query dynamically based on the provided parameters
     let sqlQuery = 'SELECT * FROM OEM_Specs WHERE 1=1';
@@ -89,13 +113,13 @@ app.get('/api/oem/models', (req, res) => {
         filters.push(mileageRange[0], mileageRange[1]);
         sqlQuery += ' AND mileage BETWEEN ? AND ?';
     }
-
+    console.log('mileage called');
     if (price) {
         const priceRange = price.split('-').map(Number);
         filters.push(priceRange[0], priceRange[1]);
         sqlQuery += ' AND list_price BETWEEN ? AND ?';
     }
-    // console.log(sqlQuery);
+    console.log(sqlQuery);
 
     // Execute the query with the parameters
     connection.query(sqlQuery, filters, (error, results) => {
