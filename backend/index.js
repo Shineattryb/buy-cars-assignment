@@ -62,30 +62,31 @@ app.get('/api/oem/models/search', (req, res) => {
     //     console.log(results)
     //     res.send(results);
     // });
-    app.get('/api/oem/models/search', (req, res) => {
-        console.log("Search API");
+   
+    console.log("Search API");
     
-        // Get the search item from the request query
-        const searchItem = req.query.searchitem;
-    
-        // Build a dynamic SQL query for partial matches
-        const sqlQuery = `
-            SELECT * FROM OEM_Specs
-            WHERE manufacturer LIKE ? OR model_name LIKE ? OR year LIKE ?
-        `;
-    
-        // Execute the query with the search item
-        connection.query(sqlQuery, [`%${searchItem}%`, `%${searchItem}%`, `%${searchItem}%`], (error, results) => {
-            if (error) {
-                console.error(error);
-                res.status(500).json({ error: 'Internal Server Error' });
-                return;
-            }
-            console.log(results);
-            res.send(results);
-        });
+    // Get the search item from the request query
+    const searchItem = req.query.searchitem;
+
+    // Build a dynamic SQL query for partial matches
+    const sqlQuery = `
+        SELECT * FROM OEM_Specs
+        WHERE manufacturer LIKE ? OR model_name LIKE ? OR year LIKE ? 
+    `;
+
+    // Execute the query with the search item
+    connection.query(sqlQuery, [`%${searchItem}%`, `%${searchItem}%`, `%${searchItem}%`], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        if(results.length===0){
+            res.json({message:'No cars Found: '});
+        }
+        console.log(results);
+        res.send(results);
     });
-    
 });
 
 
