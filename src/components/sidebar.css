@@ -1,0 +1,151 @@
+.sidebar {
+    background-color: #483C32;
+    padding: 10px;
+    border-right: 1px solid #f7bfbf;
+    overflow-y: auto;
+    width: 200px;
+    position: fixed; 
+    top: 0; 
+    height:85%;
+    z-index:1;
+  
+  }
+  
+  
+  .sidebar{
+    margin-top:92px;
+   
+  }
+  
+  #money,
+#colors,
+#mileage {
+display:flex;
+align-items:center;
+justify-content: center;
+width:100%
+}
+
+#money svg
+{
+    color: #ffcc00;
+    margin-right: 5px; 
+}
+#colors svg
+{
+    color:rgb(231, 88, 88);
+    margin-right: 5px;
+}
+#mileage svg {
+  color:#a8a87a;
+  margin-right:5px;
+}
+  h3 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight:bolder;
+    color: rgb(244, 229, 229);
+    margin-top: 14px;
+  }
+ 
+  button {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background-color:#F5F5DC;
+    color: rgb(25, 24, 24);
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  button:hover {
+    background-color:#a8a87a;
+  }
+  .slidecontainer{
+    width:100%;
+  }
+  .value{
+    font-family: 'Times New Roman', Times, serif;
+color:antiquewhite;
+margin-left:25%;
+font-size: small;
+font-style: italic;
+  }
+ 
+  @media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        overflow: auto;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items:stretch; /* Center filters vertically */
+      
+        padding: 10px; 
+    margin-top:-15px;
+    }   
+    #money,
+    #mileage {
+      order: 1; 
+    }
+    #colors {
+        display: flex;
+    
+        order: 2; 
+      }
+  }
+ 
+  
+ 
+  .main-content {
+    margin-left: 20px; 
+    padding: 20px;
+   
+  }
+  body {
+    padding-top: 80px; 
+    
+  }
+ 
+  .container {
+    max-width: 100%;
+  }
+  
+ 
+  .search-bar input,
+  .search-bar button {
+    font-size: 14px;
+  }
+ 
+  @media only screen and (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: stretch;
+      position: relative; 
+    }
+    .sidebar {
+      
+        flex-direction:column;
+      }
+    .sidebar button {
+        width: auto; 
+      }
+    /* .main-content {
+      margin-left: 0; 
+    } */
+    .explain{
+        display:flex;
+        flex-direction: row;
+      }
+      .explain2{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+  }
+  
+  
