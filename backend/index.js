@@ -52,16 +52,7 @@ app.get('/api/oem/models/count', (req, res) => {
 
 
 app.get('/api/oem/models/search', (req, res) => {
-    // console.log("Search API");
-    // connection.query(`SELECT * FROM OEM_Specs WHERE CONCAT(manufacturer , ' ' , model_name , ' ' , year) = "${req.query.searchitem}";`, (error, results) => {
-    //     if (error) {
-    //         console.error(error);
-    //         res.status(500).json({ error: 'Internal Server Error' });
-    //         return;
-    //     }
-    //     console.log(results)
-    //     res.send(results);
-    // });
+   
    
     console.log("Search API");
     
@@ -74,7 +65,7 @@ app.get('/api/oem/models/search', (req, res) => {
         WHERE manufacturer LIKE ? OR model_name LIKE ? OR year LIKE ? 
     `;
 
-    // Execute the query with the search item
+  
     connection.query(sqlQuery, [`%${searchItem}%`, `%${searchItem}%`, `%${searchItem}%`], (error, results) => {
         if (error) {
             console.error(error);
@@ -94,9 +85,9 @@ app.get('/api/oem/models/search', (req, res) => {
 
 app.get('/api/oem/models', (req, res) => {
     console.log("Cars API");
-    const price = req.query.list_price;
+    const price = req.query.list_price ? req.query.list_price:null;
     const color = req.query.colors;
-    const mileage = req.query.mileage;
+    const mileage = req.query.mileage ? req.query.mileage: null;
    
     const filters = [];
 
@@ -110,13 +101,13 @@ app.get('/api/oem/models', (req, res) => {
     }
 
     if (mileage) {
-        const mileageRange = mileage.split('-').map(Number);
+        const mileageRange = mileage;
         filters.push(mileageRange[0], mileageRange[1]);
         sqlQuery += ' AND mileage BETWEEN ? AND ?';
     }
     console.log('mileage called');
     if (price) {
-        const priceRange = price.split('-').map(Number);
+        const priceRange = price;
         filters.push(priceRange[0], priceRange[1]);
         sqlQuery += ' AND list_price BETWEEN ? AND ?';
     }
