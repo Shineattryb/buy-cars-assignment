@@ -14,7 +14,7 @@ const App = () => {
   const[searchitem,setSearchItem]=useState('');
 
   const handleSearch= (queryObject)=> {
-    axios.get('http://localhost:8000/api/oem/models/search',{
+    axios.get('https://buycar-backend.vercel.app/api/oem/models/search',{
       params: queryObject,
     })
     .then ((response)=>{
@@ -60,7 +60,7 @@ const handleFilter = (filterType, value) => {
           console.log("price");
         }
 
-        const response = await axios.get('http://localhost:8000/api/oem/models', {
+        const response = await axios.get('https://buycar-backend.vercel.app/api/oem/models', {
           params: queryObject,
         });
       
@@ -78,13 +78,14 @@ const handleFilter = (filterType, value) => {
 
   return (
     <div className="app-container">
+      <div className="nav-div">
       <Navbar handleSearch={handleSearch} />
+      </div>
       <Sidebar handleFilter={handleFilter} />
       
-     <div className="caar">
+    <div className="caar">
       <CarList cars={trendingCars} />
       </div>
-   
     </div>
   );
 };

@@ -19,7 +19,7 @@ const Navbar = ({handleSearch}) => {
       
    <h1>BUYC Corp</h1>
     <div className='search-bar'>
-      <input type="text" placeholder='search cars' value={searchitem} onChange={(e) => setSearchItem(e.target.value)} />
+      <input type="text" placeholder='Search cars' value={searchitem} onChange={(e) => setSearchItem(e.target.value)} />
       <button type="submit" onClick={handleSearchClick} >Search</button>
     </div>
     </nav>

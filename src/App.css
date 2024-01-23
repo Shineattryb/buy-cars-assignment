@@ -1,26 +1,23 @@
-*{
-    padding: 0;
-    margin:0;
-    box-sizing: border-box;
-  
-}
-.app-container{
+
+/* .app-container{
    background:linear-gradient(white,rgb(194, 185, 185));
-}
+} */
 .caar{
-margin-left:200px;
+margin-left:220px;
+margin-top:95px;
 }
 @media only screen and (max-width:600px){
-    *{
-        margin:0px;
-        padding:0px;
-    }
-       .caar{
+    
+    .caar{
         margin-left:0px;
+        margin-top:3px;
+    }
+    .nav-div{
+        margin-top:0px;
+        width:100%;
     }
 }@media only screen and (max-width:300px){
     .caar{
         margin-right:0px;
     }
 }
-
