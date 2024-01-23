@@ -81,8 +81,9 @@ const handleFilter = (filterType, value) => {
       <Navbar handleSearch={handleSearch} />
       <Sidebar handleFilter={handleFilter} />
       
-    
+     <div className="caar">
       <CarList cars={trendingCars} />
+      </div>
    
     </div>
   );
