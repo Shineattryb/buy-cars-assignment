@@ -89,4 +89,3 @@ const handleFilter = (filterType, value) => {
 };
 
 export default App;
-
