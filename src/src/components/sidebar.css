@@ -1,8 +1,8 @@
 .sidebar {
-    background-color: #483C32;
+    /* background-color: #483C32; */
     padding: 10px;
     border-right: 1px solid #f7bfbf;
-    overflow-y: auto;
+   
     width: 200px;
     position: fixed; 
     top: 0; 
@@ -21,14 +21,14 @@
 #colors,
 #mileage {
 display:flex;
-align-items:center;
-justify-content: center;
+align-items: center;
+
 width:100%
 }
 
 #money svg
 {
-    color: #ffcc00;
+    color: brown;
     margin-right: 5px; 
 }
 #colors svg
@@ -37,13 +37,14 @@ width:100%
     margin-right: 5px;
 }
 #mileage svg {
-  color:#a8a87a;
+  color:#797952;
   margin-right:5px;
 }
   h3 {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight:bolder;
-    color: rgb(244, 229, 229);
+    color:black;
+    font-size:1.25em;
     margin-top: 14px;
   }
  
@@ -51,7 +52,7 @@ width:100%
     margin-bottom: 8px;
     padding: 8px 12px;
     background-color:#F5F5DC;
-    color: rgb(25, 24, 24);
+    /* color: rgb(25, 24, 24); */
     border: none;
     border-radius: 9px;
     cursor: pointer;
@@ -73,7 +74,12 @@ margin-left:25%;
 font-size: small;
 font-style: italic;
   }
- 
+ .explain p{
+    color:black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+ }
   @media only screen and (max-width: 600px) {
     .sidebar {
         width: 100%;

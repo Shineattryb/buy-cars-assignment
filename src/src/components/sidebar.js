@@ -55,8 +55,8 @@ const handleSliderChange=(filtertype, newvalue)=>{
          valueLabelDisplay="auto"
          />
          <div class="explain">
-         <p className="value">Value1: $ {price[0]}</p>
-         <p className="value">Value2: $ {price[1]}</p>
+         <p className="value">Min: $ {price[0]}</p>
+         <p className="value">Max: $ {price[1]}</p>
          </div>
       </div>
       <div>
@@ -76,8 +76,8 @@ const handleSliderChange=(filtertype, newvalue)=>{
           valueLabelDisplay="auto"
         />
         <div class="explain">
-        <p className="value">Value1: {mileage[0]} miles</p>
-        <p className="value">Value2: {mileage[1]} miles</p>
+        <p className="value">Min: {mileage[0]} miles</p>
+        <p className="value">Max: {mileage[1]} miles</p>
         </div>
         
       </div>
