@@ -7,9 +7,20 @@
 .app-container{
    background:linear-gradient(white,rgb(194, 185, 185));
 }
+.caar{
+margin-left:200px;
+}
 @media only screen and (max-width:600px){
     *{
         margin:0px;
         padding:0px;
     }
+       .caar{
+        margin-left:0px;
+    }
+}@media only screen and (max-width:300px){
+    .caar{
+        margin-right:0px;
+    }
 }
+
