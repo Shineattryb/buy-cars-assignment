@@ -11,6 +11,11 @@ const Navbar = ({handleSearch}) => {
     }
     handleSearch(queryObject);
   };
+  const handlecancel=()=>{
+    setSearchItem('');
+   handleSearch({});
+  };
+  
   return (
     <div className="container">
     <nav >
@@ -20,7 +25,14 @@ const Navbar = ({handleSearch}) => {
    <h1>BUYC Corp</h1>
     <div className='search-bar'>
       <input type="text" placeholder='Search cars' value={searchitem} onChange={(e) => setSearchItem(e.target.value)} />
+      {searchitem && (
+            <button type="button" className="cancel-button" onClick={handlecancel}>
+              x
+            </button>
+      )
+}
       <button type="submit" onClick={handleSearchClick} >Search</button>
+      
     </div>
     </nav>
     </div>

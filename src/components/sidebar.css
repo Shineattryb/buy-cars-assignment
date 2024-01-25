@@ -45,14 +45,14 @@ width:100%
     font-weight:bolder;
     color:black;
     font-size:1.25em;
-    margin-top: 14px;
+    margin-top: 12px;
   }
  
   button {
     margin-bottom: 8px;
-    padding: 8px 12px;
+    padding: 5px 13px ;
     background-color:#F5F5DC;
-    /* color: rgb(25, 24, 24); */
+    
     border: none;
     border-radius: 9px;
     cursor: pointer;
@@ -80,6 +80,26 @@ font-style: italic;
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0;
+ }
+ .radio{
+  display:flex;
+  align-items:center;
+ }
+ #track{
+  display:flex;
+  margin-right:3px;
+  align-items: center;
+ }
+ .text{
+  
+  margin-bottom:5.5px;
+  margin-left:2px;
+  border-radius:3px;
+
+ }
+ #check{
+  margin-right:3.5px;
+  align-items: center;
  }
   @media only screen and (max-width: 600px) {
     .sidebar {
